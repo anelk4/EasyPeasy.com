@@ -30,3 +30,25 @@ def update(request):
 def degister(request):
     return render(request,'applacation1/degister.html')
 
+
+
+
+def contact(request):
+    return render(request,'applacation1/contact.html')
+
+
+
+
+def dabout(request):
+    return render(request,'applacation1/dabout.html')
+
+
+
+
+
+def kuratori(request):
+    return render(request,'applacation1/kuratori.html')
+
+
+
+
