@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>О нас</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'applacation1/css/style.css' %}">
+
+</head>
+<body>
+
+<header class="header">
+
+   <section class="flex">
+
+      <a href="{% url 'home' %}" class="logo">EasyPeasy</a>
+
+
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img src="{% static 'applacation1/img/pic-1.jpg' %}" class="image" alt="">
+         <h3 class="name">Гость</h3>
+         <p class="role">Student</p>
+         <a href=" {% url 'profile' %} " class="btn">Посмотреть профиль</a>
+         <div class="flex-btn">
+            <a href="{% url 'login' %}" class="option-btn">Войти</a>
+            <a href="{% url 'degister' %}" class="option-btn">Регистрация</a>
+         </div>
+      </div>
+
+   </section>
+
+</header>
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      <img src="{% static 'applacation1/img/pic-1.jpg' %}" class="image" alt="">
+      <h3 class="name">Гость</h3>
+      <p class="role">Student</p>
+      <a href="{% url 'profile' %}" class="btn">Посмотреть профиль</a>
+   </div>
+
+   <nav class="navbar">
+      <a href="{% url 'home' %}"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="{% url 'dabout' %}"><i class="fas fa-question"></i><span>О нас</span></a>
+      <a href="{% url 'courses' %}"><i class="fas fa-graduation-cap"></i><span>Курсы</span></a>
+      <a href="{% url 'kuratori' %}"><i class="fas fa-chalkboard-user"></i><span>Кураторы</span></a>
+      <a href="{% url 'contact' %}"><i class="fas fa-headset"></i><span>Связаться с нами</span></a>
+   </nav>
+
+</div>
+
+<section class="about">
+
+   <div class="row">
+
+      <div class="image">
+         <img src="{% static 'applacation1/img/about-img.svg' %}" alt="">
+      </div>
+
+      <div class="content">
+         <h3>Почему стоит выбрать нас?</h3>
+         <p>EasyPeasy предоставляет качественное и доступное онлайн-образование, основанное на передовых методах обучения и обновляемых материалах, что делает его привлекательным выбором для тех, кто хочет улучшить свои знания и навыки в удобное для себя время и месте.</p>
+         <a href="{% url 'courses' %}" class="inline-btn">Наши Курсы</a>
+      </div>
+
+   </div>
+
+   <div class="box-container">
+
+      <div class="box">
+         <i class="fas fa-graduation-cap"></i>
+         <div>
+            <h3>+10k</h3>
+            <p>online Курсов</p>
+         </div>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-user-graduate"></i>
+         <div>
+            <h3>+40k</h3>
+            <p>Выдающихся Студентов</p>
+         </div>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-chalkboard-user"></i>
+         <div>
+            <h3>+2k</h3>
+            <p>Опытных Кураторов</p>
+         </div>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-briefcase"></i>
+         <div>
+            <h3>100%</h3>
+            <p>Трудоустроенных</p>
+         </div>
+      </div>
+
+   </div>
+
+</section>
+
+<section class="reviews">
+
+   <h1 class="heading">Отзывы студентов</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <p>Классно, мне понравилось !</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-2.jpg' %}" alt="">
+            <div>
+               <h3>Джазирааа</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="box">
+         <p>Я влюбалась в Куратора. Он очень прекрасно препадаёт</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-3.jpg' %}" alt="">
+            <div>
+               <h3>Гульпек</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="box">
+         <p>Уффффффф, такие крутые кураторы. Не Пожалеете!</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-4.jpg' %}" alt="">
+            <div>
+               <h3>Кефтеме</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="box">
+         <p>Я бы душу продал за такие курсы</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-5.jpg' %}" alt="">
+            <div>
+               <h3>Антонио</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="box">
+         <p>Курсы по HTML в EasyPeasy были понятны и информативны, помогли быстро начать создавать свои веб-страницы.</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-6.jpg' %}" alt="">
+            <div>
+               <h3>Гамбит</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="box">
+         <p>"Что-то на Динозаврском"</p>
+         <div class="Studentt">
+            <img src="{% static 'applacation1/img/pic-7.jpg' %}" alt="">
+            <div>
+               <h3>Динозавр</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+   &copy; 2023 | <span>Easypeasy.com</span> | Все права на курсы защищены
+
+</footer>
+
+<!-- custom js file link  -->
+<script src="{% static 'applacation1/js/script.js' %}"></script>
+
+
+</body>
+</html>
