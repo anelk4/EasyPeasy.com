@@ -9,5 +9,11 @@ urlpatterns = [
     path('degister/',views.degister, name='degister'),
     path('contact/',views.contact, name='contact'),
     path('dabout/',views.dabout, name='dabout'),
-    path('kuratori/',views.kuratori, name='kuratori')
+    path('kuratori/',views.kuratori, name='kuratori'),
+    path('playlist/',views.playlist, name='playlist'),
+    path('teacher_profile/',views.teacher_profile, name='teacher_profile'),
+    path('watchvideo/',views.watchvideo, name='watchvideo')
 ]
+
+
+

@@ -52,3 +52,29 @@ def kuratori(request):
 
 
 
+
+
+def playlist(request):
+    return render(request,'applacation1/playlist.html')
+
+
+
+
+
+
+
+def teacher_profile(request):
+    return render(request,'applacation1/teacher_profile.html')
+
+
+
+
+
+
+
+def watchvideo(request):
+    return render(request,'applacation1/watchvideo.html')
+
+
+
+
