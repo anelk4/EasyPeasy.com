@@ -12,7 +12,7 @@ urlpatterns = [
     path('kuratori/',views.kuratori, name='kuratori'),
     path('playlist/',views.playlist, name='playlist'),
     path('teacher_profile/',views.teacher_profile, name='teacher_profile'),
-    path('watchvideo/',views.watchvideo, name='watchvideo')
+    path('watch_video/',views.watch_video, name='watch_video')
 ]
 
 

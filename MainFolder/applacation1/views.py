@@ -72,8 +72,8 @@ def teacher_profile(request):
 
 
 
-def watchvideo(request):
-    return render(request,'applacation1/watchvideo.html')
+def watch_video(request):
+    return render(request,'applacation1/watch_video.html')
 
 
 
