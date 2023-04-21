@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Регистрация</title>
-     {% csrf_token %}
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
@@ -71,18 +70,20 @@
 
 <section class="form-container">
 
-   <form action="" method="post" enctype="multipart/form-data">
+   <form action="{% url 'degister' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
       <h3>Регистрация</h3>
       <p>Имя <span>*</span></p>
-      <input type="text" name="name" placeholder="Пример: Акжан" required maxlength="50" class="box">
+       {{ form.name }}
       <p>Email <span>*</span></p>
-      <input type="email" name="email" placeholder="Пример: Akzhan@gmail.com" required maxlength="50" class="box">
+      {{ form.email }}
       <p>Пароль <span>*</span></p>
-      <input type="password" name="pass" placeholder="Поля для пароля" required maxlength="20" class="box">
+      {{ form.password}}
       <p>Подтвердить пароль <span>*</span></p>
-      <input type="password" name="c_pass" placeholder="Подтвердить пароль" required maxlength="20" class="box">
+      {{ form.password2}}
       <p>выбрать картинку для профиля <span>*</span></p>
-      <input type="file" accept="image/*" required class="box">
+      {{ form.image}}
+      <span> {{ error }}</span>
       <input type="submit" value="Зарегистрироваться" name="submit" class="btn">
    </form>
 
@@ -107,10 +108,6 @@
    &copy; 2023 | <span>Easypeasy.com</span> | Все права на курсы защищены
 
 </footer>
-
-<!-- custom js file link  -->
 <script src="{% static 'applacation1/js/script.js' %}"></script>
-
-
 </body>
 </html>

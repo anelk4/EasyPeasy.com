@@ -1,5 +1,6 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from .forms import Users
+from .forms import UsersForm
 
 def courses(request):
     return render(request,'applacation1/courses.html')
@@ -28,7 +29,21 @@ def update(request):
 
 
 def degister(request):
-    return render(request,'applacation1/degister.html')
+    error=''
+    if request.method=='POST':
+        form=UsersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error='Форма неправльно заполнено'
+
+    form=UsersForm()
+    data={'form':form,
+          'error':error
+
+    }
+    return render(request,'applacation1/degister.html',data)
 
 
 

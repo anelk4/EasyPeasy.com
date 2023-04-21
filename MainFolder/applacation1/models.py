@@ -1,10 +1,15 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password
 class Users(models.Model):
     pkid = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    image = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images')
+
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)
+        super(Users, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.pkid)
@@ -17,6 +22,7 @@ class Tutors(models.Model):
     profession = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
+    password2 = models.CharField(max_length=50)
     image = models.CharField(max_length=100)
 
     def __str__(self):
