@@ -1,5 +1,8 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+#from django .views.generic import TemplateView
+#from django.conf import settings
+#from django.conf.urls.static import static
 urlpatterns = [
     path('courses/',views.courses, name='courses'),
     path('',views.home, name='home'),
@@ -12,8 +15,9 @@ urlpatterns = [
     path('kuratori/',views.kuratori, name='kuratori'),
     path('playlist/',views.playlist, name='playlist'),
     path('teacher_profile/',views.teacher_profile, name='teacher_profile'),
-    path('watch_video/',views.watch_video, name='watch_video')
-]
+    path('watch_video/',views.watch_video, name='watch_video'),
+    path('',include('django.contrib.auth.urls')),
 
+]
 
 

@@ -7,7 +7,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Логин</title>
-     {% csrf_token %}
+
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
@@ -72,6 +72,7 @@
 <section class="form-container">
 
    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
       <h3>Войти</h3>
       <p>Email <span>*</span></p>
       <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
@@ -101,10 +102,6 @@
    &copy; 2023 | <span>Easypeasy.com</span> | Все права на курсы защищены
 
 </footer>
-
-<!-- custom js file link  -->
 <script src="{% static 'applacation1/js/script.js' %}"></script>
-
-
 </body>
 </html>

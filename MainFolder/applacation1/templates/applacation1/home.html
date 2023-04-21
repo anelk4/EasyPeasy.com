@@ -33,6 +33,11 @@
 
       <div class="profile">
         <img src="{% static 'applacation1/img/pic-1.jpg' %}" class="image" alt="">
+        {% if user.is_authenticated%}
+
+
+
+      {% endif%}
          <h3 class="name">Гость</h3>
          <p class="role">Student</p>
          <a href=" {% url 'profile' %} " class="btn">Посмотреть профиль</a>
@@ -83,7 +88,7 @@
             <img src="{% static 'applacation1/img/pic-10.jpg' %}" alt="">
             <div class="info">
                <h3>Жансая</h3>
-               <span>21-10-2022</span>
+               <span>23-04-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -99,7 +104,7 @@
             <img src="{% static 'applacation1/img/pic-11.jpg' %}" alt="">
             <div class="info">
                <h3>Анель</h3>
-               <span>21-10-2022</span>
+               <span>08-04-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -115,7 +120,7 @@
             <img src="{% static 'applacation1/img/pic-12.jpg' %}" alt="">
             <div class="info">
                <h3>Айкен</h3>
-               <span>21-10-2022</span>
+               <span>27-03-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -131,7 +136,7 @@
             <img src="{% static 'applacation1/img/pic-13.jpg' %}"  alt="">
             <div class="info">
                <h3>Akzhan</h3>
-               <span>21-10-2022</span>
+               <span>04-04-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -147,7 +152,7 @@
             <img src="{% static 'applacation1/img/pic-14.jpg' %}" alt="">
             <div class="info">
                <h3>Гульзана</h3>
-               <span>21-10-2022</span>
+               <span>14-02-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -163,7 +168,7 @@
             <img src="{% static 'applacation1/img/pic-15.jpg' %}" alt="">
             <div class="info">
                <h3>Джамиль</h3>
-               <span>21-10-2022</span>
+               <span>20-04-2023</span>
             </div>
          </div>
          <div class="thumb">
@@ -201,10 +206,6 @@
    &copy; 2023 | <span>Easypeasy.com</span> | Все права на курсы защищены
 
 </footer>
-
-<!-- custom js file link  -->
 <script src="{% static 'applacation1/js/script.js' %}"></script>
-
-
 </body>
 </html>
