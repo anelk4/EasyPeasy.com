@@ -118,3 +118,6 @@ def watch_video(request):
 
 
 
+def base(request):
+    return render(request,'applacation1/base.html')
+
