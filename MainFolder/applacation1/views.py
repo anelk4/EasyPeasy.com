@@ -2,6 +2,26 @@ from django.shortcuts import render,redirect
 from .forms import Users
 from .forms import UsersForm
 
+
+def degister(request):
+    error = ''
+    if request.method == 'POST':
+        form = UsersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error = 'Форма неправильно заполнена'
+            print(form.errors)  # добавить вывод ошибок формы в консоль
+    else:
+        form = UsersForm()
+        print(form.errors)  # добавить вывод ошибок формы в консоль
+
+    data = {'form': form, 'error': error}
+    return render(request, 'applacation1/degister.html', data)
+
+
+
 def courses(request):
     return render(request,'applacation1/courses.html')
 
@@ -27,23 +47,6 @@ def update(request):
 
 
 
-
-def degister(request):
-    error=''
-    if request.method=='POST':
-        form=UsersForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            error='Форма неправльно заполнено'
-
-    form=UsersForm()
-    data={'form':form,
-          'error':error
-
-    }
-    return render(request,'applacation1/degister.html',data)
 
 
 
