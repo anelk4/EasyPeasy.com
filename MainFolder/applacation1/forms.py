@@ -7,8 +7,10 @@ from .models import Comments
 from django.forms import ModelForm,TextInput,ClearableFileInput,DateField,CharField,PasswordInput
 from django.core.exceptions import ValidationError
 
+from django.forms import ModelForm #TextInput,ClearableFileInput,DateField,CharField,PasswordInput
+from django.core.exceptions import ValidationError
 from django import forms
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate
 from django.forms import TextInput, PasswordInput, ClearableFileInput
 from .models import Users
 
@@ -217,3 +219,78 @@ class LikesForm(forms.ModelForm):
     class Meta:
         model = Likes
         fields = ['fk_pklikes_user_id', 'fk_tutor_idlikes', 'fk_content_idlikes', 'like_status']
+
+
+
+
+
+
+
+
+    class ContentForm(forms.ModelForm):
+        class Meta:
+            model = Content
+            fields = ['fk_tutor_idcontent', 'fk_playlist_id', 'titlecontent', 'description_content', 'video', 'thumb',
+                      'status']
+
+        # Add additional form fields here
+        additional_field_1 = forms.CharField(max_length=50, required=False)
+        additional_field_2 = forms.BooleanField(required=False)
+
+    class BookmarkForm(forms.ModelForm):
+        class Meta:
+            model = Bookmark
+            fields = ['fk_user_id', 'fk_playlist_id']
+
+        def clean(self):
+            cleaned_data = super().clean()
+            user_id = cleaned_data.get('fk_user_id')
+            playlist_id = cleaned_data.get('fk_playlist_id')
+            if Bookmark.objects.filter(fk_user_id=user_id, fk_playlist_id=playlist_id).exists():
+                raise forms.ValidationError('Bookmark already exists for this user and playlist.')
+            return cleaned_data
+
+    class CommentsForm(forms.ModelForm):
+        name = forms.CharField(max_length=50, label='Your name', required=True)
+        email = forms.EmailField(max_length=100, label='Your email', required=True)
+
+        class Meta:
+            model = Comments
+            fields = ['fk_content_id', 'fk_user_id', 'fk_tutor_id', 'comment']
+            widgets = {
+                'fk_content_id': forms.HiddenInput(),
+                'fk_user_id': forms.HiddenInput(),
+                'fk_tutor_id': forms.HiddenInput(),
+            }
+
+        def clean(self):
+            cleaned_data = super().clean()
+            name = cleaned_data.get('name')
+            email = cleaned_data.get('email')
+            if not name:
+                raise forms.ValidationError('Please enter your name.')
+            if not email:
+                raise forms.ValidationError('Please enter your email.')
+            return cleaned_data
+
+
+
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'box',
+        'placeholder': 'Введите email'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'box',
+        'placeholder': 'Введите пароль'
+    }))
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        user = authenticate(email=email, password=password)
+        if not user:
+            raise forms.ValidationError('Неправильный email или пароль')

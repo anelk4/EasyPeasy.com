@@ -8,6 +8,13 @@ import hashlib
 import os
 from django.contrib import messages
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from .forms import UsersForm
+
+from django.contrib.auth import authenticate, login
+from .forms import LoginForm
+
 
 
 def degister(request):
@@ -26,6 +33,33 @@ def degister(request):
 
     data = {'form': form, 'error': error}
     return render(request, 'applacation1/degister.html', data)
+
+
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                form.add_error(None, 'Неправильный email или пароль')
+    else:
+        form = LoginForm()
+
+    context = {'form': form}
+    return render(request, 'applacation1/login.html', context)
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 
