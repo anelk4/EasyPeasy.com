@@ -123,3 +123,97 @@ class AddCommentForm(forms.Form):
     )
 
 
+
+
+class DeleteCommentForm(forms.Form):
+    delete_comment = forms.BooleanField(
+        widget=forms.HiddenInput(attrs={
+            'class': 'form-control',
+        }),
+        initial=True,
+        required=False,
+    )
+
+
+
+
+
+
+
+class SavePlaylistForm(forms.Form):
+    save_playlist = forms.BooleanField(required=False, widget=forms.HiddenInput())
+
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
+        self.fields['save_playlist'].label = ''
+        self.fields['save_playlist'].widget.attrs.update({'class': 'save-playlist-btn'})
+
+
+
+
+
+
+
+class CourseRequestForm(forms.Form):
+    name = forms.CharField(max_length=50)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+    age = forms.IntegerField(min_value=18, max_value=99)
+    weight = forms.DecimalField(max_digits=5, decimal_places=2)
+    is_accepted = forms.BooleanField(required=True)
+    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    time_of_birth = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
+    website = forms.URLField()
+    resume = forms.FileField()
+    profile_picture = forms.ImageField()
+
+
+
+
+
+
+
+
+class TutorsForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = Tutors
+        fields = ['name', 'profession', 'email', 'password', 'password2', 'image']
+
+
+
+
+
+
+class PlaylistForm(forms.ModelForm):
+    class Meta:
+        model = Playlist
+        fields = ['fk_tutor_id', 'title', 'description', 'thumb', 'status']
+
+
+
+
+
+
+
+
+class LikesForm(forms.ModelForm):
+    LIKE_CHOICES = (
+        ('like', 'Like'),
+        ('dislike', 'Dislike'),
+    )
+    like_status = forms.ChoiceField(choices=LIKE_CHOICES)
+
+
+
+
+
+
+
+
+
+    class Meta:
+        model = Likes
+        fields = ['fk_pklikes_user_id', 'fk_tutor_idlikes', 'fk_content_idlikes', 'like_status']

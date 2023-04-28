@@ -1,8 +1,12 @@
 from django.shortcuts import render,redirect
 from .forms import Users
 from .forms import UsersForm
+from .forms import UpdateProfileForm
 from django.contrib.auth.decorators import login_required
 from .models import Users, Tutors, Playlist, Likes, Content, Bookmark, Comments
+import hashlib
+import os
+from django.contrib import messages
 
 
 
@@ -64,8 +68,7 @@ def login(request):
 
 
 
-def update(request):
-    return render(request,'applacation1/update.html')
+
 
 
 
@@ -121,3 +124,52 @@ def watch_video(request):
 def base(request):
     return render(request,'applacation1/base.html')
 
+
+
+
+
+
+
+@login_required
+def update(request):
+    user = request.user
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            old_password = form.cleaned_data.get('old_password')
+            new_password = form.cleaned_data.get('new_password')
+            confirm_password = form.cleaned_data.get('confirm_password')
+            profile_picture = form.cleaned_data.get('profile_picture')
+
+            if name:
+                user.name = name
+            if email:
+                user.email = email
+
+            if old_password and new_password and confirm_password:
+                # Check if old password is correct
+                if not user.check_password(old_password):
+                    form.add_error('old_password', 'old password')
+                    return render(request, 'application1/update.html', {'form': form})
+
+                # Check if new password matches confirm password
+                if new_password != confirm_password:
+                    form.add_error('confirm_password', 'New passwords must match.')
+                    return render(request, 'application1/update.html', {'form': form})
+
+                user.set_password(new_password)
+
+            if profile_picture:
+                user.profile_picture = profile_picture
+
+            user.save()
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('update')
+
+    else:
+        form = UpdateProfileForm(initial=user)
+
+    context = {'form': form}
+    return render(request, 'applacation1/update.html', context)
