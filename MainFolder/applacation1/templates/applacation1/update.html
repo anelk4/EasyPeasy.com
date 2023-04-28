@@ -9,20 +9,20 @@
 
    <form action="" method="post" enctype="multipart/form-data">
        {% csrf_token %}
-      <h3>update profile</h3>
-      <p>update name</p>
+      <h3>изменить профиль</h3>
+      <p>изменить имя</p>
       <input type="text" name="name" placeholder="Akzhan" maxlength="50" class="box">
-      <p>update email</p>
+      <p>изменить email</p>
       <input type="email" name="email" placeholder="shaikh@gmail.come" maxlength="50" class="box">
-      <p>previous password</p>
+      <p>предыдущий пароль</p>
       <input type="password" name="old_pass" placeholder="eski password" maxlength="20" class="box">
-      <p>new password</p>
+      <p>новый пароль</p>
       <input type="password" name="new_pass" placeholder="eski password" maxlength="20" class="box">
-      <p>confirm password</p>
+      <p>подтвердить пароль</p>
       <input type="password" name="c_pass" placeholder="new password" maxlength="20" class="box">
-      <p>update pic</p>
+      <p>обновлённая фотография</p>
       <input type="file" accept="image/*" class="box">
-      <input type="submit" value="update profile" name="submit" class="btn">
+      <input type="submit" value="обновить профиль" name="submit" class="btn">
    </form>
 
 </section>
