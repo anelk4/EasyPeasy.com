@@ -1,5 +1,6 @@
 from django.urls import path,include
 from . import views
+from .views import login_view
 #from django .views.generic import TemplateView
 #from django.conf import settings
 #from django.conf.urls.static import static
@@ -8,7 +9,7 @@ urlpatterns = [
     path('',views.home, name='home'),
     path('profile/',views.profile, name='profile'),
     path('base', views.base, name='base'),
-    path('login/',views.login, name='login'),
+    path('login/', login_view, name='login'),
     path('update/',views.update, name='update'),
     path('degister/',views.degister, name='degister'),
     path('contact/',views.contact, name='contact'),
