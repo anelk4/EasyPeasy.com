@@ -1,74 +1,10 @@
+{% extends 'applacation1/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Профиль</title>
-      {% csrf_token %}
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="{% static 'applacation1/css/style.css' %} ">
+{% block title %}Профиль{% endblock %}
 
-</head>
-<body>
-
-<header class="header">
-
-   <section class="flex">
-
-      <a href="{% url 'home' %}" class="logo">EasyPeasy</a>
-
-
-
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
-      </div>
-
-      <div class="profile">
-         <img src="{% static 'applacation1/img/pic-1.jpg' %}" class="image" alt="">
-         <h3 class="name">Гость</h3>
-         <p class="role">Student</p>
-         <a href="{% url 'profile' %} " class="btn">Посмотреть профиль</a>
-         <div class="flex-btn">
-            <a href="{% url 'login' %}" class="option-btn">Войти</a>
-            <a href="{% url 'degister' %}" class="option-btn">Регистрация</a>
-         </div>
-      </div>
-
-   </section>
-
-</header>
-
-<div class="side-bar">
-
-   <div id="close-btn">
-      <i class="fas fa-times"></i>
-   </div>
-
-   <div class="profile">
-      <img src="{% static 'applacation1/img/pic-1.jpg' %}" class="image" alt="">
-      <h3 class="name">Гость</h3>
-      <p class="role">Student</p>
-      <a href="{% url 'profile' %}" class="btn">Посмотреть профиль</a>
-   </div>
-
-   <nav class="navbar">
-      <a href="{% url 'home' %}"><i class="fas fa-home"></i><span>home</span></a>
-      <a href="{% url 'dabout' %}"><i class="fas fa-question"></i><span>О нас</span></a>
-      <a href="{% url 'courses' %}"><i class="fas fa-graduation-cap"></i><span>Курсы</span></a>
-      <a href="{% url 'kuratori' %}"><i class="fas fa-chalkboard-user"></i><span>Кураторы</span></a>
-      <a href="{% url 'contact' %}"><i class="fas fa-headset"></i><span>Связаться с нами</span></a>
-   </nav>
-
-</div>
-
-
+{% block content %}
 <section class="user-profile">
    <h1 class="heading">{{ user.username }}'s profile</h1>
    <div class="info">
@@ -80,7 +16,7 @@
          {% endif %}
          <h3>{{ user.username }}</h3>
          <p>{{ user.profile.bio }}</p>
-         <a href="{% url 'update' %}" class="inline-btn">обновить профиль</a>
+         <a href="{% url 'update' %}" class="inline-btn">update profile</a>
       </div>
       <div class="box-container">
          <div class="box">
@@ -116,29 +52,4 @@
       </div>
    </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<footer class="footer">
-
-   &copy; 2023 | <span>Easypeasy.com</span> | Все права на курсы защищены
-
-</footer>
-
-<!-- custom js file link  -->
-<script src="{% static 'applacation1/js/script.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}
