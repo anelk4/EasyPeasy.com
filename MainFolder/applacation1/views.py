@@ -102,6 +102,9 @@ def login(request):
 
 
 
+def update(request):
+    return render(request,'applacation1/update.html')
+
 
 
 
@@ -207,3 +210,4 @@ def update(request):
 
     context = {'form': form}
     return render(request, 'applacation1/update.html', context)
+
